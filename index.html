@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Netero - Task Manager</title>
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/kinetic-v5.1.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery.bpm.js"></script>
+		<script type="text/javascript">
+			
+			//Type definition
+			/*
+				1-start
+				2-normal-end
+				3-terminal-end
+				4-task
+				5-normal-gateway
+				6-parallel-gateway
+			*/
+			
+			//state definition
+			/*
+				0-nocolor
+				1-blue
+				2-green
+				3-yellow
+				4-red
+			*/
+			var bpmJson={
+				name:"Proceso de resguardo",
+				elems:
+				[
+					{
+						id:1,
+						name:"Inicio",
+						type:1,
+						state:1
+					},
+					{
+						id:2,
+						name:"Actividad 1",
+						type:4,
+						state:1
+					},
+					{
+						id:3,
+						name:"Nos vamos por A?",
+						type:5,
+						state:1
+					},
+					{
+						id:4,
+						name:"Actividad 2",
+						type:4,
+						state:1
+					},
+					{
+						id:5,
+						name:"Actividad 3",
+						type:4,
+						state:0
+					},
+					{
+						id:6,
+						name:"",
+						type:5,
+						state:1
+					},
+					{
+						id:7,
+						name:"Actividad 4 -asdada -sdas d-asd asd as dasd asd",
+						type:4,
+						state:2
+					},
+					{
+						id:8,
+						name:"Fin",
+						type:3,
+						state:0
+					}
+				],
+				wires:
+				[
+					{
+						startElem:1,
+						endElem:2,
+						condition:null,
+						state:1
+					},
+					{
+						startElem:2,
+						endElem:3,
+						condition:null,
+						state:1
+					},
+					{
+						startElem:3,
+						endElem:4,
+						condition:null,
+						state:1
+					},
+					{
+						startElem:3,
+						endElem:5,
+						condition:null,
+						state:0
+					},
+					{
+						startElem:4,
+						endElem:6,
+						condition:null,
+						state:1
+					},
+					{
+						startElem:5,
+						endElem:6,
+						condition:null,
+						state:0
+					},
+					{
+						startElem:6,
+						endElem:7,
+						condition:null,
+						state:1
+					}
+					,
+					{
+						startElem:7,
+						endElem:8,
+						condition:null
+					}
+					
+				]
+			};
+			
+			
+			$(document).ready(function(){
+				$("#jsbpmWrapper").jsbpm(bpmJson);
+			});
+		
+		</script>
+		
+	</head>
+	<body>
+		<div style="width: 100%; height: 100%; overflow: auto;">
+			<canvas id="jsbpmWrapper">
+				Por favor use un navegador con soporte de HTML5
+			</canvas>
+		</div>
+	</body>
+</html>
